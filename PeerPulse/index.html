@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PeerPulse | No Student Left Behind</title>
+    <meta
+      name="description"
+      content="PeerPulse helps students recover from missed classes, get quick help, and grow through community learning."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div class="brand-mark">P</div>
+          <div>
+            <p class="brand-name">Peer<span>Pulse</span></p>
+            <small>Learn together. Grow together.</small>
+          </div>
+        </div>
+
+        <nav class="topnav" aria-label="Main navigation">
+          <button class="nav-pill active" type="button" data-view="home">Home</button>
+          <button class="nav-pill" type="button" data-view="requests">Requests</button>
+          <button class="nav-pill" type="button" data-view="leaderboard">Leaderboard</button>
+          <button class="nav-pill" type="button" data-view="profile">Profile</button>
+        </nav>
+      </header>
+
+      <main class="app-main">
+        <section id="onboardingScreen" class="view-panel active">
+          <div class="panel onboarding-panel">
+            <p class="eyebrow">Create your profile</p>
+            <h1>Welcome to PeerPulse.</h1>
+            <p class="subtitle">
+              Set up your student profile so you can ask for help, connect with classmates, and build a trusted learning network.
+            </p>
+
+            <form id="profileForm" class="onboarding-form">
+              <div class="field-row two-up">
+                <label>
+                  <span>Full name</span>
+                  <input id="profileNameInput" type="text" placeholder="Your name" required />
+                </label>
+
+                <label>
+                  <span>Course</span>
+                  <input id="profileCourseInput" type="text" placeholder="B.Tech Computer Science" required />
+                </label>
+              </div>
+
+              <div class="field-row two-up">
+                <label>
+                  <span>Semester</span>
+                  <select id="profileSemesterInput" required>
+                    <option value="">Select semester</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>College</span>
+                  <input id="profileCollegeInput" type="text" placeholder="Your college name" required />
+                </label>
+              </div>
+
+              <label>
+                <span>Strong subjects</span>
+                <input id="profileSubjectsInput" type="text" placeholder="Data Structures, Programming, Math" required />
+              </label>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Create profile</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <section id="homeScreen" class="view-panel" hidden>
+          <section class="hero panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Student-powered learning network</p>
+              <h1>You missed a class. Your community fills the gap.</h1>
+              <p class="subtitle">
+                Ask once, reach the right helper, and turn confusion into a clear path back to class.
+              </p>
+
+              <div class="cta-row">
+                <button id="askButton" class="primary-btn" type="button">Ask for help</button>
+                <button id="browseLibraryButton" class="secondary-btn" type="button">Browse library</button>
+              </div>
+            </div>
+
+            <div class="hero-metrics" aria-label="PeerPulse metrics">
+              <div class="metric-card">
+                <strong id="homeRequestsMetric">0</strong>
+                <span>requests active</span>
+              </div>
+              <div class="metric-card">
+                <strong id="homeHelpMetric">0</strong>
+                <span>resolved this week</span>
+              </div>
+              <div class="metric-card">
+                <strong id="homeNetworkMetric">1</strong>
+                <span>learning circle</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="feature-grid" aria-label="Core features">
+            <article class="mini-feature">
+              <span class="feature-tag">Smart Requests</span>
+              <h3>One doubt, many paths to clarity.</h3>
+              <p>Text, voice, and photo notes with urgency and subject tags.</p>
+            </article>
+
+            <article class="mini-feature">
+              <span class="feature-tag highlight">Missed-Class Rescue</span>
+              <h3>Recover faster after illness or absences.</h3>
+              <p>Track missed modules, collect notes, and create a recovery checklist.</p>
+            </article>
+
+            <article class="mini-feature">
+              <span class="feature-tag">Fair Scoring</span>
+              <h3>Recognize genuine help, not spam.</h3>
+              <p>Resolution-based points, subject rankings, and recognition streaks.</p>
+            </article>
+
+            <article class="mini-feature">
+              <span class="feature-tag active-tag">Knowledge Library</span>
+              <h3>Turn resolved doubts into reusable learning.</h3>
+              <p>Search past explanations and verify trusted answers before asking again.</p>
+            </article>
+          </section>
+
+          <section id="helpForm" class="request-panel panel" hidden>
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">New request</p>
+                <h2>What are you stuck on today?</h2>
+              </div>
+            </div>
+
+            <form id="doubtForm" class="doubt-form">
+              <div class="field-row two-up">
+                <label>
+                  <span>Topic</span>
+                  <input id="topic" type="text" placeholder="Binary Search Trees" required />
+                </label>
+
+                <label>
+                  <span>Subject</span>
+                  <select id="subject" required>
+                    <option value="">Choose a subject</option>
+                    <option>Data Structures</option>
+                    <option>Engineering Mathematics</option>
+                    <option>Digital Electronics</option>
+                    <option>Programming</option>
+                    <option>Computer Networks</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="field-row two-up">
+                <label>
+                  <span>Urgency</span>
+                  <select id="urgency">
+                    <option>Low</option>
+                    <option selected>Normal</option>
+                    <option>High</option>
+                    <option>Exam tomorrow</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Send to</span>
+                  <select id="recipient" required>
+                    <option value="">Choose a helper</option>
+                    <option>My classmate</option>
+                    <option>Subject expert</option>
+                    <option>Teacher</option>
+                    <option>Open community</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                <span>Describe your doubt</span>
+                <textarea
+                  id="description"
+                  rows="4"
+                  placeholder="I missed the lecture on tree rotations and I am stuck on understanding the balancing logic."
+                  required
+                ></textarea>
+              </label>
+
+              <div class="attachments-row">
+                <span>Attach</span>
+                <input id="attachmentInput" type="file" class="hidden-file-input" multiple accept="image/*,audio/*,.pdf,.doc,.docx,.txt" />
+                <button type="button" class="chip-btn" data-attachment-type="photo">Photo</button>
+                <button type="button" class="chip-btn" data-attachment-type="voice">Voice</button>
+                <button type="button" class="chip-btn" data-attachment-type="notes">Notes</button>
+              </div>
+              <div id="attachmentSummary" class="attachment-summary" aria-live="polite"></div>
+
+              <div class="form-actions">
+                <button type="submit" class="primary-btn">Send help request</button>
+                <button id="cancelButton" type="button" class="secondary-btn light">Cancel</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="panel section-block" id="requests">
+            <div class="section-heading split">
+              <div>
+                <p class="eyebrow">My help requests</p>
+                <h2>Support in progress</h2>
+              </div>
+              <span class="soft-tag" id="requestCount">3 active</span>
+            </div>
+
+            <div id="requestList" class="request-list" aria-live="polite"></div>
+          </section>
+
+          <section class="dashboard-grid">
+            <div class="panel section-block">
+              <div class="section-heading split">
+                <div>
+                  <p class="eyebrow">Missed-Class Rescue</p>
+                  <h2>Recovery checklist</h2>
+                </div>
+                <button id="addModuleButton" type="button" class="mini-btn">+ add module</button>
+              </div>
+
+              <ul id="rescueList" class="checklist" aria-live="polite"></ul>
+            </div>
+
+            <div class="panel section-block">
+              <div class="section-heading split">
+                <div>
+                  <p class="eyebrow">Knowledge library</p>
+                  <h2>Previously solved doubts</h2>
+                </div>
+                <button id="viewLibraryButton" type="button" class="mini-btn">View all</button>
+              </div>
+
+              <div id="libraryList" class="library-list"></div>
+            </div>
+          </section>
+
+          <section class="panel section-block leaderboard-block">
+            <div class="section-heading split">
+              <div>
+                <p class="eyebrow">Recognition</p>
+                <h2>Top helpers this week</h2>
+              </div>
+              <span class="soft-tag">Updated 12 mins ago</span>
+            </div>
+
+            <div id="leaderboardList" class="leaderboard-list"></div>
+          </section>
+
+          <section class="panel chat-panel">
+            <div class="section-heading split">
+              <div>
+                <p class="eyebrow">Private doubt chat</p>
+                <h2>Active support session</h2>
+              </div>
+              <span class="status-badge accepted">Live</span>
+            </div>
+
+            <div id="chatMessages" class="chat-messages" aria-live="polite">
+              <div class="empty-state small-empty">
+                <h3>No active conversation yet</h3>
+                <p>Accept a request to start a private help thread with a classmate.</p>
+              </div>
+            </div>
+
+            <form id="chatForm" class="chat-input-row">
+              <input id="chatInput" type="text" placeholder="Type a message..." />
+              <input id="chatImageInput" type="file" class="hidden-file-input" accept="image/*" />
+              <button type="button" class="secondary-btn small" id="chatResolveButton" hidden>Doubt solved</button>
+              <button type="button" class="secondary-btn small" id="chatImageButton">Photo</button>
+              <button type="submit" class="primary-btn small">Send</button>
+            </form>
+          </section>
+        </section>
+
+        <section id="requestsScreen" class="view-panel" hidden>
+          <div class="panel section-block">
+            <div class="section-heading split">
+              <div>
+                <p class="eyebrow">Requests</p>
+                <h2>All active requests</h2>
+              </div>
+              <button class="primary-btn small" type="button" id="newRequestFromRequests">New request</button>
+            </div>
+            <div id="requestsPageList" class="request-list"></div>
+          </div>
+        </section>
+
+        <section id="leaderboardScreen" class="view-panel" hidden>
+          <div class="panel section-block">
+            <div class="section-heading split">
+              <div>
+                <p class="eyebrow">Recognition</p>
+                <h2>Leaderboard</h2>
+              </div>
+              <span class="soft-tag">This week</span>
+            </div>
+            <div class="leaderboard-tabs" aria-label="Leaderboard filters">
+              <button class="filter-btn active" type="button" data-filter="topHelpers">Top helpers</button>
+              <button class="filter-btn" type="button" data-filter="bestExplained">Best explained</button>
+              <button class="filter-btn" type="button" data-filter="mostHelped">Most helped</button>
+            </div>
+            <div id="leaderboardPageList" class="leaderboard-list"></div>
+          </div>
+        </section>
+
+        <section id="profileScreen" class="view-panel" hidden>
+          <div class="panel profile-panel">
+            <div class="profile-header">
+              <div class="avatar" id="profileAvatar">NA</div>
+              <div>
+                <p class="eyebrow">Student profile</p>
+                <h2 id="profileName">Your name</h2>
+                <p class="muted-text" id="profileSummary">Course · Semester · College</p>
+              </div>
+            </div>
+
+            <div class="profile-switcher">
+              <label for="activeProfileSelect">Community account</label>
+              <div class="switcher-row">
+                <select id="activeProfileSelect"></select>
+                <button type="button" class="secondary-btn small" id="addProfileButton">+ Add profile</button>
+              </div>
+            </div>
+
+            <div class="profile-actions-row">
+              <button type="button" class="secondary-btn" id="editProfileButton">Edit profile</button>
+            </div>
+
+            <div class="profile-stats">
+              <div class="stat-box">
+                <strong id="profilePoints">0</strong>
+                <span>Points</span>
+              </div>
+              <div class="stat-box">
+                <strong id="profileHelped">0</strong>
+                <span>Helped</span>
+              </div>
+              <div class="stat-box">
+                <strong id="profileBadges">0</strong>
+                <span>Badges</span>
+              </div>
+            </div>
+
+            <div class="profile-grid">
+              <div class="profile-card">
+                <h3>Strong subjects</h3>
+                <div class="tag-list" id="profileSubjects"></div>
+              </div>
+
+              <div class="profile-card">
+                <h3>Recent impact</h3>
+                <ul class="activity-list" id="profileImpact"></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
